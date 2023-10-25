@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-module.exports = router;
+module.exports = {
+  // signUp: require('./user/signUp'),
+  // signIn: require('./user/signIn'),
+  category: require('./category'),
+  restorants: require('./restorants'),
+  contactUs: require('./contactUs'),
+  jobs: require('./Jobs'),
+  users: require('./Users'),
+  types: require('./Types'),
+};
