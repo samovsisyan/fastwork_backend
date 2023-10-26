@@ -1,37 +1,45 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../services/datebase');
-const Category = require('./Category')
 
-class Jobs extends Sequelize.Model {
-
-
-
+class FreeJobPost extends Sequelize.Model {
 }
 
-Jobs.init({
+FreeJobPost.init({
     id: {
         type: Sequelize.BIGINT,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
+    fullName: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    email: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
+    title: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    department: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+    type: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
     location: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    level: {
-        type: Sequelize.STRING,
-        allowNull: true
-    },
-    department: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    type: {
-        type: Sequelize.INTEGER,
+    salary: {
+        type: Sequelize.STRING(64),
         allowNull: false,
     },
-    salary: {
+    showSalary: {
         type: Sequelize.STRING(64),
         allowNull: false,
     },
@@ -39,10 +47,7 @@ Jobs.init({
         type: Sequelize.STRING,
         allowNull: false
     },
-    responsibilities: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
+
     requirements: {
         type: Sequelize.STRING,
         allowNull: false
@@ -57,11 +62,6 @@ Jobs.init({
         defaultValue: '0',
         // primaryKey: true
     },
-    // categoryId: {
-    //     type: Sequelize.STRING,
-    //     allowNull: false,
-    //     key: 'category_id'
-    // },
     created_at: {
         type: Sequelize.DATE, // Use DATE or TIMESTAMP, depending on your database
         allowNull: false,
@@ -74,15 +74,11 @@ Jobs.init({
     },
 }, {
     sequelize,
-    modelName: 'jobs',
+    modelName: 'freeJobPost',
     timestamps: false
 });
 
 
-// Jobs.belongsTo(Category, {
-//     foreignKey: 'categoryId',
-// });
+FreeJobPost.sync();
 
-Jobs.sync();
-
-module.exports = Jobs;
+module.exports = FreeJobPost;

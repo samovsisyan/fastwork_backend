@@ -7,4 +7,7 @@ module.exports = {
   jobs: require('./Jobs'),
   users: require('./Users'),
   types: require('./Types'),
+  company: require('./Campany'),
+  paidJobPost: require('./PaidJobPost'),
+  freeJobPost: require('./FreeJobPost'),
 };

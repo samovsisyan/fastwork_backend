@@ -1,53 +1,44 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../services/datebase');
-const Category = require('./Category')
 
-class Jobs extends Sequelize.Model {
+class Company extends Sequelize.Model {
 
 
 
 }
 
-Jobs.init({
+Company.init({
     id: {
         type: Sequelize.BIGINT,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
-    location: {
+    name: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    level: {
+    website: {
         type: Sequelize.STRING,
         allowNull: true
     },
-    department: {
+    industry: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    type: {
-        type: Sequelize.INTEGER,
+    social: {
+        type: Sequelize.STRING,
         allowNull: false,
     },
-    salary: {
-        type: Sequelize.STRING(64),
-        allowNull: false,
+    logo: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    cover: {
+        type: Sequelize.STRING,
+        allowNull: false
     },
     description: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    responsibilities: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    requirements: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    skills: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -57,11 +48,6 @@ Jobs.init({
         defaultValue: '0',
         // primaryKey: true
     },
-    // categoryId: {
-    //     type: Sequelize.STRING,
-    //     allowNull: false,
-    //     key: 'category_id'
-    // },
     created_at: {
         type: Sequelize.DATE, // Use DATE or TIMESTAMP, depending on your database
         allowNull: false,
@@ -74,15 +60,11 @@ Jobs.init({
     },
 }, {
     sequelize,
-    modelName: 'jobs',
+    modelName: 'company',
     timestamps: false
 });
 
 
-// Jobs.belongsTo(Category, {
-//     foreignKey: 'categoryId',
-// });
+Company.sync();
 
-Jobs.sync();
-
-module.exports = Jobs;
+module.exports = Company;
